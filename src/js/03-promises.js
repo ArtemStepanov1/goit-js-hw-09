@@ -1,11 +1,11 @@
-import Notiflix from "notiflix";
+import Notiflix from 'notiflix';
 
 refs = {
   form: document.querySelector('.form'),
   delayInp: document.querySelector('input[name="delay"]'),
   stepInp: document.querySelector('input[name="step"]'),
   amountInp: document.querySelector('input[name="amount"]'),
-}
+};
 
 function createPromise(position, delay) {
   return new Promise((resolve, reject) => {
@@ -18,7 +18,7 @@ function createPromise(position, delay) {
       }
     }, delay);
   });
-}
+};
 
 refs.form.addEventListener('submit', (e) => {
 	e.preventDefault()
@@ -35,5 +35,5 @@ refs.form.addEventListener('submit', (e) => {
 			});
   			delay = delay + step;	
 	}
-})
+});
 
