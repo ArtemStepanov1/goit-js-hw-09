@@ -25,15 +25,20 @@ refs.form.addEventListener('submit', (e) => {
 	let delay = Number(refs.delayInp.value);
 	const position = refs.amountInp.value
 	let step = Number(refs.stepInp.value);
-	for (let i = 1; i <= position; i++) {
-			createPromise(i,delay)
-			.then(({ position, delay }) => {
-				Notiflix.Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
-			})
-			.catch(({ position, delay }) => {
-				Notiflix.Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);
-			});
-  			delay = delay + step;	
-	}
+  if(delay < 0 || step < 0 || position < 0){
+    return Notiflix.Notify.failure('Please enter only positive number');
+    } else {
+    for (let i = 1; i <= position; i++) {
+        createPromise(i,delay)
+        .then(({ position, delay }) => {
+          Notiflix.Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
+        })
+        .catch(({ position, delay }) => {
+          Notiflix.Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);
+        });
+          delay = delay + step;	
+    }
+  }
+
 });
 
